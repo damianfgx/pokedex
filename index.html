@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jafet Damian Flores Garcia" />
+    <title>Pokédex</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/app.css">
+    <link rel="icon" href="img/pokebola.png" />
+</head>
+
+<body>
+
+    <!--Navbar-->
+    <header id="header" class="navbar sticky-top nav navbar-expand-lg navbar-dark">
+        <div class="container-fluid text-center">
+            <a class="navbar-brand">[POKÉDEX]</a>
+    </header>
+    <main>
+
+        <!-- Hero Section -->
+        <div id="hero" class="hero">
+            <div class="contain">
+                <div class="box">
+                    <!--Letrero con typed.js-->
+                    <h1 class="titulo text-white"><span class="typed"></span></h1>
+
+                </div>
+            </div>
+        </div>
+        <!--Barra de busqueda-->
+        <div class="container">
+            <form id="search-form">
+                <div class="input-group mb-3">
+                    <input type="text" autocomplete="off" class="form-control" name="pokemon" id="pokemon"
+                        placeholder="Ingrese el nombre del Pokemon o su numero" />
+                    <button class="btn btn-success" type="submit">Mostrar Pokemón</button>
+                </div>
+            </form>
+        </div>
+
+        <!--Card para mostrar pokemon-->
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="container text-center img-fluid " id="pokemon-card"></div>
+                        <div class="card-body">
+                            <h5 class="text-center card-title">Pokemón</h5>
+                            <div id="pokemon-not-found"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-center text-white">
+        <!-- Copyright -->
+        <div class="text-center p-3">
+            © 2022 Pokédex JD
+        </div>
+        <!-- Copyright -->
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/letrero.js"></script>
+    <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
