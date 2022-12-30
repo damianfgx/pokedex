@@ -1,15 +1,28 @@
 const form = document.querySelector('#search-form');
 const pokemonCard = document.querySelector('#pokemon-card');
 const viewNotFound = document.querySelector('#pokemon-not-found');
+const inputPokemon = document.querySelector('#inputpokemon');
+const btnRandom = document.querySelector('#btn-random');
+const btnSearch = document.querySelector('#btn-submit');
 
 const URL_BASE = 'https://pokeapi.co/api/v2/pokemon/';
 
-let miTimeout;
 
-// Buscar un pokemon de manera aleatoria despues de haber buscado un pokemon con un retraso de 30 segundos
+// TODO: Puedes buscar un pokemon especifico, al hacerlo, debes esperar 30 segundos para buscar otro pokemon especifico.
+// TODO: Puedes buscar un pokemon aleratorio N veces sin limite de tiempo.
+// TODO: Los pokemones aleratorios buscados no reinician el contador de 30 segundos.
+
+
 
 document.addEventListener('DOMContentLoaded', () => {
+    renderTextCopyrigh( );
+
+    
     form.addEventListener('submit', e => {
+
+        disabledBtnSubmit()
+        console.log("buscando")
+
         e.preventDefault();
         const { pokemon } = Object.fromEntries(new FormData(e.target));
 
@@ -18,6 +31,27 @@ document.addEventListener('DOMContentLoaded', () => {
         getPokemon(pokemon);
     });
 });
+
+const disabledBtnSubmit = () => {
+    btnSearch.disabled = true;
+
+    let timeRest = 30;
+
+    const interval = setInterval(() => {
+        timeRest--;
+        btnSearch.textContent = `El botton se habilitara en ${timeRest} segundos`;
+
+        if (!timeRest) {
+            btnSearch.textContent = `Buscar`;
+            btnSearch.disabled = false;
+            clearInterval(interval);
+        }
+
+    }, 1000);
+}
+
+btnRandom.addEventListener('click', () => pokemonRandom() );
+
 
 const renderLoading = () => {
     const img = document.createElement('img');
@@ -33,6 +67,7 @@ const getPokemon = async nombre => {
     renderLoading();
 
     const url = URL_BASE + String(nombre).toLowerCase();
+    console.log("🚀 ~ file: main.js:70 ~ getPokemon ~ url", url)
 
     try {
         const resp = await fetch(url);
@@ -48,7 +83,6 @@ const renderNotFound = nombre => {
     pokemonCard.innerHTML = '';
     viewNotFound.innerHTML = '';
 
-    clearTimeout(miTimeout);
 
     const h2 = document.createElement('h2');
 
@@ -58,14 +92,10 @@ const renderNotFound = nombre => {
 };
 
 const renderPokemon = data => {
-    if (!!miTimeout) clearTimeout(miTimeout);
-
-    pokemonTimer();
-
     const { name, id, sprites } = data;
 
     const img = document.createElement('img');
-    img.src = sprites.other['official-artwork'].front_default;
+    img.src = sprites.other.home.front_default;
     img.width = 200;
     img.height = 200;
 
@@ -77,14 +107,19 @@ const renderPokemon = data => {
     viewNotFound.innerHTML = '';
 };
 
-const pokemonTimer = () => {
-    miTimeout = setTimeout(() => {
-        pokemonRandom();
-    }, 30000);
-};
 
 const pokemonRandom = () => {
     const id = Math.floor(Math.random() * 898) + 1;
 
     getPokemon(id);
 };
+
+
+
+const renderTextCopyrigh = () => {
+   const year = new Date().getFullYear();
+    const text = document.querySelector('#text-copyright');
+
+
+    text.textContent = `© ${year} - Pokédex JD`;
+}

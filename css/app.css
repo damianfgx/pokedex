@@ -1,19 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-*{
+
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
 
-body{
+body {
   font-family: 'Poppins', sans-serif;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-  
+
 main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 .hero {
@@ -32,19 +33,20 @@ main {
   margin-bottom: 20px;
   z-index: -4;
 }
+
 .hero h1 {
   font-size: 46px;
   margin: -20px 0 20px;
   color: #333147;
 }
 
-.hero p{
+.hero p {
   font-size: 20px;
   letter-spacing: 1px;
-  color:#333147;
+  color: #333147;
 }
 
-section h1{
+section h1 {
   text-align: center;
 }
 
@@ -60,10 +62,11 @@ section h1{
   max-height: 100%;
   padding: 20px 40px;
 }
-
-
-
 .nav {
-    background-color: #DF2A25;
+  background-color: #DF2A25;
 }
 
+.butonCenter{
+  margin: 0 auto;
+
+}
