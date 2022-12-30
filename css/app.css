@@ -11,6 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  
 }
 
 main {
@@ -66,7 +67,3 @@ section h1 {
   background-color: #DF2A25;
 }
 
-.butonCenter{
-  margin: 0 auto;
-
-}
